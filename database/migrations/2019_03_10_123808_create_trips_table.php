@@ -15,10 +15,10 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
+            $table->string('title')->comment("Trip Name");
             $table->string('description');
-            $table->text('details');
-            $table->integer('price');
+            $table->text('details')->nullable();
+            $table->integer('price')->unsigned();
             $table->enum('trans_method', ['plane', 'bus', 'car', 'train']);
             $table->date('from');
             $table->date('to');
@@ -27,6 +27,8 @@ class CreateTripsTable extends Migration
             $table->bigInteger('category_id');
 
             $table->boolean('active')->default(true);
+
+            //$table->foreign('category_id')->references('id')->on('categories');
 
             $table->timestamps();
             $table->softDeletes();
