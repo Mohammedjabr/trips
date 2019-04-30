@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Trip extends Model
 {
+    use SoftDeletes;
+
+
+
     // active_trips
     //protected $table = "trips";
 //    protected $primaryKey = "s_id";
